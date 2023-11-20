@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         map.put("日本", R.raw.ic_japan);
         map.put("美国", R.raw.ic_american);
         map.put("中国", R.raw.ic_china);
+        map.put("榆林市",R.raw.ic_yulin);
     }
 
     MapView mapView;

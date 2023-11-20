@@ -221,6 +221,34 @@ public class MapView extends View {
         }
     }
 
+    //   @Override
+//    protected void onDraw(Canvas canvas) {
+//        super.onDraw(canvas);
+//        canvas.save();
+//        if (vectorWidth != -1 && viewScale == -1) {
+//            int width = getWidth();
+//            viewScale = width * 1.0f / vectorWidth;  // 计算视图比例
+//        }
+//        if (viewScale != -1) {
+//            float scale = viewScale * userScale;
+//            matrix.reset();
+//            matrix.postTranslate(offsetX, offsetY);
+//            matrix.postScale(scale, scale, focusX, focusY);
+//
+//            invertMatrix.reset();
+//            matrix.invert(invertMatrix);  // 计算逆转换矩阵
+//        }
+//        canvas.setMatrix(matrix);
+//        canvas.drawColor(bgColor);  // 绘制背景色
+//        if (initFinish) {
+//            for (MapItem item : list) {
+//                item.onDraw(canvas, paint);  // 绘制地图项
+//            }
+//        }
+//
+//        showDebugInfo(canvas);  // 显示调试信息
+//    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -234,9 +262,14 @@ public class MapView extends View {
             matrix.reset();
             matrix.postTranslate(offsetX, offsetY);
             matrix.postScale(scale, scale, focusX, focusY);
-
             invertMatrix.reset();
             matrix.invert(invertMatrix);  // 计算逆转换矩阵
+//            // 计算居中偏移量
+//            float contentWidth = calculateContentWidth();  // 计算内容宽度
+//            float contentHeight = calculateContentHeight();  // 计算内容高度
+//            float offsetX = (getWidth() - contentWidth) / 2;  // 水平居中
+//            float offsetY = (getHeight() - contentHeight) / 2;  // 垂直居中
+//            matrix.postTranslate(offsetX, offsetY);  // 应用居中偏移量
         }
         canvas.setMatrix(matrix);
         canvas.drawColor(bgColor);  // 绘制背景色
@@ -245,7 +278,6 @@ public class MapView extends View {
                 item.onDraw(canvas, paint);  // 绘制地图项
             }
         }
-
         showDebugInfo(canvas);  // 显示调试信息
     }
 
